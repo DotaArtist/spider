@@ -33,7 +33,11 @@ class NewSpider(scrapy.Spider):
         item['page_url'] = response.url
 
         if "zt_d" in response.url:
-            pass
+            item['title'] = "".join(response.xpath("//*[@class='ellipsis']/text()").extract())
+            item['content'] = "".join(response.xpath("//*[@class='title']/../p/text()").extract())
+
+            item["page_type"] = "新闻专题页"
+
         else:
             item['title'] = "".join(response.xpath("//*[@class='main-title']/text()").extract())
             item['content'] = "".join(response.xpath("//*[@cms-style='font-L']/text()").extract())
@@ -41,7 +45,7 @@ class NewSpider(scrapy.Spider):
             item['source'] = "".join(response.xpath("//*[@class='source ent-source']/text()").extract())
             item["page_type"] = "新闻详情页"
 
-            item['publish_time'] = "".join(response.xpath("//*[@class='date-source']/span/text()").extract())
+            # item['publish_time'] = "".join(response.xpath("//*[@class='date-source']/span/text()").extract())
 
         item["crawl_time"] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
