@@ -1,6 +1,6 @@
 import scrapy
 import time
-from newscollecter.items import TutorialItem
+from newscollecter.items import NewsItem
 
 
 class NewSpider(scrapy.Spider):
@@ -10,7 +10,7 @@ class NewSpider(scrapy.Spider):
     def parse(self, response):
         """解析首页"""
         for i in response.xpath("//*[@class='fin_tabs0_c0']/div[1]/*/a"):  # 要闻
-            item = TutorialItem()
+            item = NewsItem()
             item["title"] = "".join(i.xpath("text()").extract())
             item["link"] = "".join(i.xpath("@href").extract())
             item["page_url"] = response.url
@@ -19,7 +19,7 @@ class NewSpider(scrapy.Spider):
             yield scrapy.Request(response.urljoin(i.xpath("@href").extract()[0]), callback=self.page_parse)
 
         for i in response.xpath("//*[@class='fin_tabs0_c0']/div[2]/*/li/a"):  # 要闻分页
-            item = TutorialItem()
+            item = NewsItem()
             item["crawl_time"] = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             item["title"] = "".join(i.xpath("text()").extract())
             item["link"] = "".join(i.xpath("@href").extract())
@@ -29,7 +29,7 @@ class NewSpider(scrapy.Spider):
 
     def page_parse(self, response):
         """文章页面解析"""
-        item = TutorialItem()
+        item = NewsItem()
         item['page_url'] = response.url
 
         if "zt_d" in response.url:

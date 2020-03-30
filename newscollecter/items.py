@@ -8,7 +8,7 @@
 import scrapy
 
 
-class TutorialItem(scrapy.Item):
+class NewsItem(scrapy.Item):
     # define the fields for your item here like:
     title = scrapy.Field()  # 标题
     content = scrapy.Field()  # 内容
