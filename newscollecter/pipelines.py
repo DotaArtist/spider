@@ -54,30 +54,18 @@ class UrlSavePipeline(object):
 
 class SQLitePipeline(object):
     '''写入sqlite'''
-
-    def __init__(self):
+    def open_spider(self, spider):
         self.conn = sqlite3.connect('news.db')
+        self.cursor = self.conn.cursor()
 
     def process_item(self, item, spider):
-        self.conn.execute(
-            """CREATE TABLE IF NOT EXISTS news_info(
-            data_id integer PRIMARY KEY autoincrement,
-            title TEXT NOT NULL,
-            content TEXT NOT NULL,
-            link TEXT NOT NULL,
-            page_url TEXT NOT NULL,
-            publish_time TEXT NOT NULL,
-            crawl_time TEXT NOT NULL,
-            source TEXT NOT NULL,
-            page_type TEXT NOT NULL)"""
-        )
-        self.conn.execute("""INSERT INTO news_info VALUES ({}, {}, {}, {}, {}, {}, {}, {});""".format(
-            item['title'], item['content'], item['link'], item['page_url'], item['publish_time'],
-            item['crawl_time'], item['source'], item['page_type'])
-        )
+        # self.cursor.execute("""CREATE TABLE IF NOT EXISTS news_info(data_id integer PRIMARY KEY autoincrement,title TEXT NOT NULL,content TEXT NOT NULL,link TEXT NOT NULL,page_url TEXT NOT NULL,publish_time TEXT NOT NULL,crawl_time TEXT NOT NULL,source TEXT NOT NULL,page_type TEXT NOT NULL)""")
+        self.cursor.execute("""INSERT INTO news_info(title,content,link,page_url,publish_time,crawl_time,source,page_type) VALUES ({}, {}, {}, {}, {}, {}, {}, {})""".format(item['title'], item['content'], item['link'], item['page_url'], item['publish_time'],item['crawl_time'], item['source'], item['page_type']))
         self.conn.commit()
-        self.conn.close()
         return item
+
+    def close_spider(self, spider):
+        self.conn.close()
 
 
 class DefaultValuesPipeline(object):
