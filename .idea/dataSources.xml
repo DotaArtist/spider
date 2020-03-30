@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="SpiderKeeper" uuid="53af0680-38b0-4d81-a1cb-d5b1dd97c8f1">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\myproject\tutorial\SpiderKeeper.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="default" uuid="64d9ff3c-fc0e-434d-8f34-2c29e7dd5227">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\myproject\tutorial\dbs\default.db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="sina" uuid="0e687f81-29f4-4a7d-a30c-8f178c9312e6">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\myproject\tutorial\dbs\sina.db</jdbc-url>
+    </data-source>
+  </component>
+</project>
