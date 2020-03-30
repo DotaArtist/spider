@@ -1,0 +1,6 @@
+/build/
+/dbs/
+/eggs/
+/logs/
+/project.egg-info/
+/news.db

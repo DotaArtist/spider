@@ -66,8 +66,10 @@ TELNETCONSOLE_PORT = None
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
+   'tutorial.pipelines.DefaultValuesPipeline': 100,
    'tutorial.pipelines.CsvWritePipeline': 300,
-
+   # 'tutorial.pipelines.SQLitePipeline': 400,
+   'tutorial.pipelines.UrlSavePipeline': 500,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
