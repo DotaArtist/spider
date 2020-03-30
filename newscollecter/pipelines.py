@@ -83,12 +83,12 @@ class SQLitePipeline(object):
 class DefaultValuesPipeline(object):
     """默认值填充"""
     def process_item(self, item, spider):
-        item.setdefault('title', '')
-        item.setdefault('content', '')
-        item.setdefault('link', '')
-        item.setdefault('page_url', '')
-        item.setdefault('publish_time', '')
+        item.setdefault('title', 'null')
+        item.setdefault('content', 'null')
+        item.setdefault('link', 'null')
+        item.setdefault('page_url', 'null')
+        item.setdefault('publish_time', 'null')
         # item.setdefault('crawl_time', '')
-        item.setdefault('source', '')
-        item.setdefault('page_type', '')
+        item.setdefault('source', 'null')
+        item.setdefault('page_type', 'null')
         return item

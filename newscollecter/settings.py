@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for tutorial project
+# Scrapy settings for newscollecter project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'tutorial'
+BOT_NAME = 'newscollecter'
 
-SPIDER_MODULES = ['tutorial.spiders']
-NEWSPIDER_MODULE = 'tutorial.spiders'
+SPIDER_MODULES = ['newscollecter.spiders']
+NEWSPIDER_MODULE = 'newscollecter.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'tutorial (+http://www.yourdomain.com)'
+#USER_AGENT = 'newscollecter (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -48,13 +48,13 @@ TELNETCONSOLE_PORT = None
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialSpiderMiddleware': 543,
+#    'newscollecter.middlewares.TutorialSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'tutorial.middlewares.TutorialDownloaderMiddleware': 543,
+#    'newscollecter.middlewares.TutorialDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -66,10 +66,10 @@ TELNETCONSOLE_PORT = None
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'tutorial.pipelines.DefaultValuesPipeline': 100,
-   'tutorial.pipelines.CsvWritePipeline': 300,
-   # 'tutorial.pipelines.SQLitePipeline': 400,
-   'tutorial.pipelines.UrlSavePipeline': 500,
+   'newscollecter.pipelines.DefaultValuesPipeline': 100,
+   'newscollecter.pipelines.CsvWritePipeline': 300,
+   # 'newscollecter.pipelines.SQLitePipeline': 400,
+   'newscollecter.pipelines.UrlSavePipeline': 500,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -92,3 +92,5 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+LOG_LEVEL = 'INFO'

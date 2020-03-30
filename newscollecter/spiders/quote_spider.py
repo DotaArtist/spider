@@ -1,6 +1,6 @@
 import scrapy
 import time
-from tutorial.items import TutorialItem
+from newscollecter.items import TutorialItem
 
 
 class NewSpider(scrapy.Spider):
@@ -34,16 +34,29 @@ class NewSpider(scrapy.Spider):
 
         if "zt_d" in response.url:
             item['title'] = "".join(response.xpath("//*[@class='ellipsis']/text()").extract())
-            item['content'] = "".join(response.xpath("//*[@class='title']/../p/text()").extract())
+            item['content'] = "".join(response.xpath("//*[@class='CM-summary-text']/text()").extract())
 
-            item["page_type"] = "新闻专题页"
+            item["page_type"] = "专题"
+
+        elif "stock" in response.url:
+            item['title'] = "".join(response.xpath("//*[@class='main-title']/text()").extract())
+            item['content'] = "".join(response.xpath("//*[@class='article']/p/text()").extract())
+
+            item['source'] = "".join(response.xpath("//*[@class='source ent-source']/text()").extract())
+            item["page_type"] = "股票"
+
+        elif "imeeting" in response.url:
+            item['title'] = "".join(response.xpath("//*[@class='main-title']/text()").extract())
+            item['content'] = "".join(response.xpath("//*[@class='article']/p/text()").extract())  # TODO
+
+            item["page_type"] = "直播预告"
 
         else:
             item['title'] = "".join(response.xpath("//*[@class='main-title']/text()").extract())
             item['content'] = "".join(response.xpath("//*[@cms-style='font-L']/text()").extract())
 
             item['source'] = "".join(response.xpath("//*[@class='source ent-source']/text()").extract())
-            item["page_type"] = "新闻详情页"
+            item["page_type"] = "新闻详情"
 
             # item['publish_time'] = "".join(response.xpath("//*[@class='date-source']/span/text()").extract())
 
