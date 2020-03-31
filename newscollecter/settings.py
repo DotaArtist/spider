@@ -69,7 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'newscollecter.pipelines.DefaultValuesPipeline': 100,
-   'newscollecter.pipelines.CsvWritePipeline': 300,
+   # 'newscollecter.pipelines.CsvWritePipeline': 300,
    'newscollecter.pipelines.SQLitePipeline': 400,
    'newscollecter.pipelines.UrlSavePipeline': 500,
 }

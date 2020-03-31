@@ -19,6 +19,7 @@ class NewsItem(scrapy.Item):
 
     publish_time = scrapy.Field()  # 发布时间
     crawl_time = scrapy.Field()  # 爬取时间
+    crawl_day = scrapy.Field()  # 爬取日期
 
     source = scrapy.Field()  # 信息来源
     page_type = scrapy.Field()  # 页面类型
