@@ -12,6 +12,7 @@ class NewsItem(scrapy.Item):
     # define the fields for your item here like:
     title = scrapy.Field()  # 标题
     content = scrapy.Field()  # 内容
+    keyword = scrapy.Field()  # 关键词
 
     link = scrapy.Field()  # 点击链接
     page_url = scrapy.Field()  # 文章地址
