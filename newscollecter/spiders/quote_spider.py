@@ -99,7 +99,11 @@ class NewSpider(scrapy.Spider):
 
         else:
             item['title'] = "".join(response.xpath("//*[@class='main-title']/text()").extract())
-            item['content'] = "".join(response.xpath("//*[@cms-style='font-L']/text()").extract())
+
+            if "chanjing" in response.url:
+                item['content'] = "".join(response.xpath("//*[@class='article']/p/text()").extract())
+            else:
+                item['content'] = "".join(response.xpath("//*[@cms-style='font-L']/text()").extract())
 
             item['source'] = "".join(response.xpath("//*[@class='source ent-source']/text()").extract())
             item["page_type"] = "新闻详情"
